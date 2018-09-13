@@ -38,8 +38,9 @@ def zip_to(paths, to_zip):
     cmd += ' ' + path
   print cmd
   status, output = commands.getstatusoutput(cmd)
-  
-
+  if status:
+    sys.stderr(output)
+    sys.exit(1)  
 
 def main():
   # This basic command line argument parsing code is provided.
@@ -71,18 +72,16 @@ def main():
 
   # +++your code here+++
   # Call your functions
-  if not todir and not tozip: 
-    paths = get_special_paths(os.getcwd())
-    for path in paths:
-      print path
+  paths = []
+  for dirname in args:
+    paths.extend(get_special_paths(dirname))
 
   if todir:
-    paths = get_special_paths(os.getcwd())
     copy_to(paths, todir)
-    
-  if tozip:
-    paths = get_special_paths(os.getcwd())
+  elif tozip:
     zip_to(paths, tozip)
+  else:
+    print '\n'.join(paths)
 
 
 if __name__ == "__main__":
