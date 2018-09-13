@@ -24,13 +24,11 @@ def get_special_paths(dirname):
       paths.append(os.path.abspath(os.path.join(dirname, filename)))
   return paths
 
-
 def copy_to(paths, to_dir):
   if not os.path.exists(to_dir):
     os.mkdir(to_dir)
   for path in paths:
     shutil.copy(path, to_dir)
-
 
 def zip_to(paths, to_zip):
   cmd = 'zip -j ' + to_zip
@@ -82,7 +80,6 @@ def main():
     zip_to(paths, tozip)
   else:
     print '\n'.join(paths)
-
 
 if __name__ == "__main__":
   main()
