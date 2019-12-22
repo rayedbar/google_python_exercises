@@ -1,3 +1,3 @@
-# Google Python Exercises
+# Google Python Class
 
-[Google's Python Class](https://developers.google.com/edu/python)
+[Google for Education: Python](https://developers.google.com/edu/python)
